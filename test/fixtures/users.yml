@@ -1,6 +1,6 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
+admin:
   name: MyString
   email: MyString
   password: MyString
@@ -8,9 +8,9 @@ one:
   english_level: MyString
   tecnic_knowledge: MyText
   cv_link: MyString
-  admin: false
+  admin: true
 
-two:
+normal:
   name: MyString
   email: MyString
   password: MyString
