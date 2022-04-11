@@ -15,8 +15,8 @@ module ApplicationHelper
   end
 
   def is_admin?
-   if !current_user.admin
-     redirect_to user_path(current_user.id)
-   end
- end
+    if !current_user.admin
+      redirect_to user_path(current_user.id)
+    end
+  end
 end

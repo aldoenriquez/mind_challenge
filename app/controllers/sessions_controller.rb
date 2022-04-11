@@ -2,12 +2,11 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by(email: params[:email])
-    if !!@user && @user.password == params[:password]
+    if @user && @user.password == params[:password]
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to root_path, notice: "Logged in succesfully"
     else
-      message = "The email and/or password are incorrect, please check your credentials."
-      redirect_to login_path, notice: message
+      redirect_to login_path, notice: "The email and/or password are incorrect, please check your credentials."
     end
   end
 

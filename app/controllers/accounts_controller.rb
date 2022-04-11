@@ -1,6 +1,6 @@
 class AccountsController < ApplicationController
   include ApplicationHelper
-  before_action :log_in!
+  before_action :log_in!, :is_admin?
   before_action :set_account, only: %i[ show edit update destroy ]
 
   # GET /accounts or /accounts.json
