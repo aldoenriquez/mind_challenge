@@ -1,0 +1,24 @@
+<nav class="border-gray-200 px-2 sm:px-4 py-2.5 rounded bg-gray-800">
+  <div class="container flex flex-wrap justify-between items-center mx-auto">
+    <%= link_to "HOME", root_path, :class => "self-center text-xl font-semibold whitespace-nowrap text-white hover:text-gray-500"  %>
+    <div class="hidden w-full md:block md:w-auto" id="mobile-menu">
+      <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+        <li>
+          <%= link_to "Users", users_path, :class => "block p-0 text-white bg-blue-700 rounded bg-transparent hover:text-gray-500"  %>
+        </li>
+        <li>
+          <%= link_to "Accounts", accounts_path, :class => "block p-0 text-white bg-blue-700 rounded bg-transparent hover:text-gray-500"  %>
+        </li>
+        <li>
+          <a href="#" class="block p-0 text-white bg-blue-700 rounded bg-transparent hover:text-gray-500">Teams log</a>
+        </li>
+        <% if logged_in? %>
+        <li class="text-center">
+          <span class="text-white"><%= current_user.email %></span>
+          <%= button_to "Log out", logout_path, method: :delete, :class => "block p-0 text-white bg-blue-700 rounded bg-transparent hover:text-gray-500" %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

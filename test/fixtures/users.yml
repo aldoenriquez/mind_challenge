@@ -1,18 +1,18 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-  email: MyString
+admin:
+  name: Admin
+  email: admin@test.com
   password: MyString
   password_confirmation: MyString
   english_level: MyString
   tecnic_knowledge: MyText
   cv_link: MyString
-  admin: false
+  admin: true
 
-two:
-  name: MyString
-  email: MyString
+normal:
+  name: Normal
+  email: normal@test.com
   password: MyString
   password_confirmation: MyString
   english_level: MyString
