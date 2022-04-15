@@ -50,6 +50,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to user_url(@admin_user)
   end
 
+  test "should destroy user when ADMIN" do
+    login!(email: @admin_user.email, password: @admin_user.password)
+    assert_difference("User.count", -1) do
+      delete user_url(@admin_user)
+    end
+
+    assert_redirected_to users_url
+  end
+
   test "should NOT get index when NORMAL" do
     login!(email: @normal_user.email, password: @normal_user.password)
     get users_url
@@ -75,28 +84,19 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
-  test "should NOT get edit when NORMAL" do
+  test "should get edit when NORMAL" do
     login!(email: @normal_user.email, password: @normal_user.password)
     get edit_user_url(@normal_user)
-    assert_redirected_to user_path(@normal_user.id)
+    assert_response :success
   end
 
-  test "should NOT update user when NORMAL" do
+  test "should update user when NORMAL" do
     login!(email: @normal_user.email, password: @normal_user.password)
     patch user_url(@normal_user), params: { user: { admin: @normal_user.admin, cv_link: @normal_user.cv_link, email: @normal_user.email, english_level: @normal_user.english_level, name: @normal_user.name, password: @normal_user.password, password_confirmation: @normal_user.password_confirmation, tecnic_knowledge: @normal_user.tecnic_knowledge } }
     assert_redirected_to user_path(@normal_user.id)
   end
-
-  test "should destroy user when ADMIN" do
-    login!(email: @admin_user.email, password: @admin_user.password)
-    assert_difference("User.count", -1) do
-      delete user_url(@admin_user)
-    end
-
-    assert_redirected_to users_url
-  end
   
-  test "should not destroy user when NORMAL" do
+  test "should NOT destroy user when NORMAL" do
     login!(email: @normal_user.email, password: @normal_user.password)
     delete user_url(@normal_user)
 
